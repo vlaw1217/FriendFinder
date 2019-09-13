@@ -1,3 +1,5 @@
+
+
 const express = require("express");
 
 const path = require("path");
@@ -7,7 +9,8 @@ const path = require("path");
 // =============================================================
 const app = express();
 
-const PORT = 3000;
+const PORT = 3001;
+
 
 //sets up the Express app to handle data parsing//
 //Middleware help url coding//
@@ -22,10 +25,10 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"))
 });
 
-/*app.get("/", function (req, res) {
+app.get("/survey", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
     //console.log(res.sendFile)
-});*/
+});
 
 
 

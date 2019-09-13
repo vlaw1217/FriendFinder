@@ -13,11 +13,18 @@ const PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/api/friends", function (req, res) {
+//$("#button").click(function () {(
+app.get("/", function (req, res) {
+        
+        res.sendFile(path.join(__dirname, "../public/survey.html"))
+    });
+//});
+
+/*app.get("/data/friends", function (req, res) {
     return res.json(friends);
 });
 
-app.post("/api/friends", function (req, res) {
+app.post("/data/friends", function (req, res) {
     let newFriends = req.body;
 
     console.log(newFriends);
@@ -25,7 +32,7 @@ app.post("/api/friends", function (req, res) {
     friends.push(newFriends);
 
     res.json(newFriends);
-});
+});*/
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
