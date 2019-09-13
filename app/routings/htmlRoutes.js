@@ -4,7 +4,15 @@
 let path = require("path");
 
 module.exportss = function (app) {
-    app.get()
+    //When button click on "go to survey" button, page will go to survey page
+    app.get("/survey", function (req, res) {
+        res.sendFile(path.join(__dirname + "/../public.survey.html"));
+    });
+    // Set home page as default
+    app.use(function (req, res) {
+        res.sendFile(path.join(__dirname + "/../public.home.html"));
+    });
+
 }
 
 

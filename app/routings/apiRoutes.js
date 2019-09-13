@@ -1,3 +1,19 @@
+let friends = require("../data/friends.js");
+
+module.exports = function (app) {
+    app.get("/api/friends", function(req. res))
+}
+
+
+
+
+
+
+
+
+
+
+
 const express = require("express");
 
 const path = require("path");
