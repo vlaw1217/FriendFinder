@@ -33,7 +33,7 @@ let friends = [
     }
     
 ]
-module.exports - friends;
+module.exports = friends;
 /*const express = require("express");
 
 const path = require("path");

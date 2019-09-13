@@ -3,7 +3,7 @@
 
 let path = require("path");
 
-module.exportss = function (app) {
+module.exports = function (app) {
     //When button click on "go to survey" button, page will go to survey page
     app.get("/survey", function (req, res) {
         res.sendFile(path.join(__dirname + "/../public.survey.html"));
@@ -18,7 +18,7 @@ module.exportss = function (app) {
 
 // Sets up the Express App
 // =============================================================
-const app = express();
+/*const app = express();
 
 const PORT = 3001;
 
@@ -46,4 +46,4 @@ app.get("/friends", function (req, res) {
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
-});
+});*/
