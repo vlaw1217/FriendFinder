@@ -13,18 +13,16 @@ const PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//$("#button").click(function () {(
-app.get("/", function (req, res) {
-        
+app.get("/", function (req, res) {      
         res.sendFile(path.join(__dirname, "../public/survey.html"))
-    });
-//});
+});
 
-/*app.get("/data/friends", function (req, res) {
+// Display a JSON of all possible friends
+app.get("/data/friends", function (req, res) {
     return res.json(friends);
 });
 
-app.post("/data/friends", function (req, res) {
+/*app.post("/data/friends", function (req, res) {
     let newFriends = req.body;
 
     console.log(newFriends);
