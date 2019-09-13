@@ -1,8 +1,11 @@
 
+//const express = require("express");
 
-const express = require("express");
+let path = require("path");
 
-const path = require("path");
+module.exportss = function (app) {
+    app.get()
+}
 
 
 // Sets up the Express App
@@ -26,6 +29,11 @@ app.get("/", function (req, res) {
 app.get("/survey", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   
+});
+
+app.get("/friends", function (req, res) {
+    //res.sendFile(path.join(__dirname, "apiRoutes.js"));
+   return res.json(friends)
 });
 
 app.listen(PORT, function () {
