@@ -1,4 +1,6 @@
 let friends = require("../data/friends.js");
+let path = require("path");
+var fs = require('fs');
 
 // Get data from api friends and show it as json 
 module.exports = function (app) {
@@ -28,6 +30,8 @@ module.exports = function (app) {
             photo: req.body.photo,
             scores: x
         };
+
+        
 
         console.log("Name: " + userName);
         console.log("User Score " + userScores);
@@ -62,8 +66,38 @@ module.exports = function (app) {
         console.log(bestMatch);
         friends.push(userData);
         console.log("New User added");
+    
+
+        //var fs = require('fs');
+        
+    
+        //fs.appendFile('app/data/friends.js', 'data to append', (err) => {
+        //    if (err) throw err;
+        //    console.log('The "data to append" was appended to file!');
+        //});
+
+        /*fs.open('app/data/friends.js', 'a', (err, fd) => {
+            if (err) throw err;
+            fs.appendFile(fd, 'data to append', 'utf8', (err) => {
+                fs.close(fd, (err) => {
+                    if (err) throw err;
+                });
+                if (err) throw err;
+            });
+        });*/
+
+/*
+        const fs = require('fs');
+
+        fs.appendFile('app/data/friends.js', 'data to append', function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+
+*/
         console.log(userData);
         res.json(bestMatch);
+        
     });
 
     

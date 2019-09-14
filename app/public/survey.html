@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../data/friends.js "></script>
+    <script src="/../data/friends.js "></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -30,7 +30,7 @@
             <strong>Question 1</strong>
         </h3>
         <h4>Do you think punctuality is important in a relationship?</h4>
-        <select id="select1">
+        <select data-placeholder ="" class="select" id="q1">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -43,7 +43,7 @@
             <strong>Question 2</strong>
         </h3>
         <h4>"Respect" is the main key to keep a good relationship.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q2">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -56,7 +56,7 @@
             <strong>Question 3</strong>
         </h3>
         <h4>I love challenging.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q3">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -69,7 +69,7 @@
             <strong>Question 4</strong>
         </h3>
         <h4>Pet is my best friend.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q4">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -82,7 +82,7 @@
             <strong>Question 5</strong>
         </h3>
         <h4>Travelling can help me to relax.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q5">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -95,7 +95,7 @@
             <strong>Question 6</strong>
         </h3>
         <h4>I like to exercise everyday.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q6">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -108,7 +108,7 @@
             <strong>Question 7</strong>
         </h3>
         <h4>Desert is my best friend.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q7">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -121,7 +121,7 @@
             <strong>Question 8</strong>
         </h3>
         <h4>To watch more horror movies can help sleeping quantity.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q8">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -134,7 +134,7 @@
             <strong>Question 9</strong>
         </h3>
         <h4>I must listen music everyday.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q9">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -147,7 +147,7 @@
             <strong>Question 10</strong>
         </h3>
         <h4>Beef is not my favirote food.</h4>
-        <select id="select2">
+        <select data-placeholder ="" class="select" id="q10">
             <option value="">--Select an option--</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -197,22 +197,62 @@
             // Question: What does this code do?
             $("#subBtn").on("click", function (event) {
                 event.preventDefault();
+                //alert("aaa");
                 function validateForm() {
+                    alert("in function")
                     let isValid = true;
                     $(".form-control").each(function () {
-                        if ($(this.val() === "") isValid = false;
+                        if ($(this).val() === "") isValid === false;
+                        
                     });
-                    $(".chosen-select")
+                    $(".select").each(function(){
+                        if ($(this).val() === "") isValid === false;
+                        
+                    });
+                
                     return isValid;
                 }
-                    if (validateform())
-                }
+                
+                
+                    if (validateForm() === true){
+                        alert("validate true")
+                        //alert($("#name").val().trim());
+                        //alert($("#q1").val());
+
+                        let userData = {
+                            name: $("#name").val().trim(),
+                            photo: $("#photo").val().trim(),
+                            scores: [
+                                $("#q1").val(),
+                                $("#q2").val(),
+                                $("#q3").val(),
+                                $("#q4").val(),
+                                $("#q5").val(),
+                                $("#q6").val(),
+                                $("#q7").val(),
+                                $("#q8").val(),
+                                $("#q9").val(),
+                                $("#q10").val()
+                            ]
+                        };
+                       
+                        var currentURL=window.location.origin;
+                         alert("current url:" + currentURL);
+                        $.post(currentURL + "/api/friends", userData, 
+                            function (data) {
+                                
+                                alert("Adding character...");
+                            });
+
+
+                    }
+                
+
+            })
 
 
 
-
-
-                var newFriends = {
+             /*   var newFriends = {
                     name: $("#name").val().trim(),
                     photo: $("#photo").val().trim(),
                     select1: $("#select1").val().trim(),
@@ -225,10 +265,10 @@
                         console.log("add.html", data);
                         alert("Adding character...");
                     });
-            });
+            });*/
 
-
-        </script>-->
+</script>
+        
 </body>
 
 </html>
