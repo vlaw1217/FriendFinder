@@ -19,6 +19,7 @@ module.exports = function (app) {
         // Take the result from the user post, converted user scores to number
         let userData = req.body;
         let userName = userData.name;
+        let userPhoto = userData.photo;
         let userScores = userData.scores;
         
         let x = userScores.map(function (item){
@@ -66,35 +67,34 @@ module.exports = function (app) {
         console.log(bestMatch);
         friends.push(userData);
         console.log("New User added");
-    
+ 
 
-        //var fs = require('fs');
-        
-    
-        //fs.appendFile('app/data/friends.js', 'data to append', (err) => {
-        //    if (err) throw err;
-        //    console.log('The "data to append" was appended to file!');
-        //});
+        var fs = require("fs");
 
-        /*fs.open('app/data/friends.js', 'a', (err, fd) => {
-            if (err) throw err;
-            fs.appendFile(fd, 'data to append', 'utf8', (err) => {
-                fs.close(fd, (err) => {
-                    if (err) throw err;
-                });
-                if (err) throw err;
+
+        var addData = ",{\rname:\"" + userName + "\",\rphoto:\"" + userPhoto + "\",\rscores:[" + userScores+"]\r}\r"
+        var cursor = "//insert";
+        addData += cursor;
+        fs.readFile("app/data/friends.js", "utf-8", function (err, data) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            var newData = data.replace(/\/\/insert/, addData);
+            fs.writeFile("app/data/friends.js", newData, function (err) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log("done");
             });
-        });*/
-
-/*
-        const fs = require('fs');
-
-        fs.appendFile('app/data/friends.js', 'data to append', function (err) {
-            if (err) throw err;
-            console.log('Saved!');
         });
 
-*/
+
+
+
+        
         console.log(userData);
         res.json(bestMatch);
         

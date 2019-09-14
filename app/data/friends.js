@@ -34,7 +34,8 @@ let friends = [
         photo: "",
         scores: [3, 1, 3, 5, 3, 2, 2, 4, 2, 2]
     }
-    
-]
 
+
+,{name:"Samatha",photo:"gdgdgf",scores:[3,5,4,5,2,1,3,1,1,2]},{name:"Samatha2",photo:"gdgdgf2",scores:[4,5,4,5,2,1,3,1,1,5]}//insert
+]
 module.exports = friends;
