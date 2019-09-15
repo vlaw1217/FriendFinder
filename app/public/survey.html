@@ -10,6 +10,7 @@
     <script src="/../data/friends.js "></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="dist/popupS.min.js"></script>
 
     <title>Survey</title>
 </head>
@@ -192,14 +193,36 @@
 
 
     </div>-->
+<div id="resultsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h2 class="modal-title"><strong>Best Match</strong></h2>
+            </div>
 
+            <div class="modal-body">
+                <h2 id="matchName"></h2>
+                <img id="matchImg" src="https://via.placeholder.com/400x400"
+                    alt="Placeholder image in case user pic doesn't show" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
         <script type="text/javascript">
             // Question: What does this code do?
             $("#subBtn").on("click", function (event) {
                 event.preventDefault();
                 //alert("aaa");
                 function validateForm() {
-                    alert("in function")
+                    //alert("in function")
                     let isValid = true;
                     $(".form-control").each(function () {
                         if ($(this).val() === "") isValid === false;
@@ -215,7 +238,7 @@
                 
                 
                     if (validateForm() === true){
-                        alert("validate true")
+                        //alert("validate true")
                         //alert($("#name").val().trim());
                         //alert($("#q1").val());
 
@@ -237,11 +260,13 @@
                         };
                        
                         var currentURL=window.location.origin;
-                         alert("current url:" + currentURL);
+                         //alert("current url:" + currentURL);
                         $.post(currentURL + "/api/friends", userData, 
                             function (data) {
-                                
-                                alert("Adding character...");
+                                $("#matchName").text(data.name);
+                                $("#matchImg").attr("src", data.photo);
+                                $("#resultsModal").modal("toggle");
+                                //alert("Adding character...");
                             });
 
 
