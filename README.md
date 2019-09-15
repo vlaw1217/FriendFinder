@@ -1,6 +1,6 @@
 # Friend Finder - Node and Express Servers
 
-Please click this link view it.
+It is the link as below to view and try it out.
 
 https://hidden-headland-27691.herokuapp.com/
 
